@@ -19,6 +19,10 @@ Route::get('/add', function () {
     return view('add');
 });
 
+Route::get('/generator', function () {
+    return view('generator');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

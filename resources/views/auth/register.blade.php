@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<title>Register</title>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -72,7 +74,7 @@
                             <label for="password_hint"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Password Hint') }}</label>
                             <div class="col-md-6">
-                                <input id="password-hint" type="text" class="form-control">
+                                <input id="password_hint" type="text" class="form-control">
                             </div>
                         </div>
 

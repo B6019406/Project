@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class PasswordsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -17,8 +22,8 @@ class PasswordsController extends Controller
         return Validator::make($data, [
             'website' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
         ]);
     }
 
@@ -26,11 +31,11 @@ class PasswordsController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Password
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Password::create([
             'website' => $data['name'],
             'url' => $data['email'],
             'username' => $data['username'],
