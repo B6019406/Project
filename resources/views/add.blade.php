@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+<style scoped>
+    .button-generator {}
+</style>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -55,7 +59,7 @@
                             </div>
                         </div>
 
-                        {{-- Login Button --}}
+                        {{-- Send Button --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
