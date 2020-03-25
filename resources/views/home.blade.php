@@ -16,6 +16,10 @@
   {{-- Add search bar here --}}
 
 
+  <div class="row justify-content-space-between">
+    <button onclick="location.href='/add'"></button>
+  </div>
+
   <div class="row justify-content-center">
     <table class="table table-striped">
       <thead class="thead-dark">
