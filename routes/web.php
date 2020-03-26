@@ -27,4 +27,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/add', 'PasswordsController@index')->name('add');
+Route::post('/add', ['as' => '/add', 'uses' => 'PasswordsController@save_data']);

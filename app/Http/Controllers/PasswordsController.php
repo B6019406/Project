@@ -33,7 +33,7 @@ class PasswordsController extends Controller
      * @param  array  $data
      * @return \App\Password
      */
-    protected function create(array $data)
+    public function create()
     {
         return Password::create([
             'website' => $data['name'],
