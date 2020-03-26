@@ -8,12 +8,28 @@
     #slider {
         width: 100%;
     }
+
+    .bi-arrow-left {
+        cursor: pointer;
+    }
 </style>
 
 @section('content')
 <title>Password Generator</title>
 
 <div class="container">
+
+    <div class="row justify-content-flex-start">
+        <svg class="bi bi-arrow-left" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg" onclick="window.history.go(-1); return false;">
+            <path fill-rule="evenodd"
+                d="M5.854 4.646a.5.5 0 010 .708L3.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+                clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M2.5 8a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H3a.5.5 0 01-.5-.5z"
+                clip-rule="evenodd" />
+        </svg>
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-lg-8 col-sm-12">
             <div class="content">
@@ -23,7 +39,7 @@
                 <hr>
                 <input type="range" min="8" max="40" name="slider" id="slider">
                 <hr>
-                <div id="length"></div>
+                <div id="passLength"></div>
                 <hr>
                 <button onclick="generate()" class="btn btn-outline-dark">Generate</button>
                 <button onclick="copy()" class="btn btn-outline-dark">Copy to Clipboard</button>
@@ -35,9 +51,10 @@
 @endsection
 
 <script>
-    // Disable textbox
-    document.getElementById("display").disabled = true;
+    // Variables
+    let sliderValue = document.getElementById("slider").value
 
+    // Function to generate password
     function generate() {
         // Set password length
         let complexity = document.getElementById("slider").value;
@@ -56,6 +73,7 @@
         document.getElementById("display").value = password;
     }
 
+    // Function to copy password to clipboard
     function copy() {
         // Get text in textbox
         var copyText = document.getElementById("display");
@@ -68,5 +86,14 @@
         document.execCommand("copy");
     }
 
-    document.getElementById("length").innerHTML = "Length: 25"; 
+    // Disable textbox
+    document.getElementById("display").disabled = true;
+
+    document.getElementById("slider").oninput = function() {
+        if(document.getElementById("slider").value > 0) {
+            document.getElementById("passLength").innerHTML = "Length: " + sliderValue;
+        } else {
+            document.getElementById("passLength").innerHTML = "Length: 1"
+        }
+    }
 </script>

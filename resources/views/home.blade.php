@@ -2,7 +2,15 @@
 @extends('layouts.home')
 
 <style scoped>
+  .fa {
+    font-size: 30px;
+  }
 
+  th,
+  td {
+    border-right: 1px solid #fff;
+    text-align: center;
+  }
 </style>
 
 @section('content')
@@ -16,33 +24,34 @@
   {{-- Add search bar here --}}
 
 
-  <div class="row justify-content-space-between">
-    <button onclick="location.href='/add'"></button>
+  <div class="row justify-content-space-around">
+    <button class="btn btn-outline-dark" onclick="location.href='/add'">+ Add Item</button>
   </div>
 
   <div class="row justify-content-center">
     <table class="table table-striped">
+
       <thead class="thead-dark">
         <tr>
           <th scope="col">Website</th>
           <th scope="col">Username</th>
           <th scope="col">Password</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <th><a href="http://amazon.co.uk">Amazon</th>
+          <td><a href="http://amazon.co.uk">Amazon</td>
           <td>Username</td>
           <td>Password</td>
-        </tr>
-
-        <tr>
-          <th><a href="http://youtube.com">YouTube</th>
-          <td>Username</td>
-          <td>Password</td>
+          <td>
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-copy"></i>
+          </td>
         </tr>
       </tbody>
+
     </table>
   </div>
 </div>
