@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Redirect;
+
+use App\Password;
+
 class PasswordsController extends Controller
 {
     public function __construct()
@@ -33,14 +37,14 @@ class PasswordsController extends Controller
      * @param  array  $data
      * @return \App\Password
      */
-    public function create()
+    public function create(Request $request)
     {
-        return Password::create([
-            'website' => $data['name'],
-            'url' => $data['email'],
-            'username' => $data['username'],
-            'password' => Hash::make($data['password'])
-        ]);
+        $website = $request->input('website');
+        $url = $request->input('url');
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        return Redirect::back();
     }
 
     public function index()

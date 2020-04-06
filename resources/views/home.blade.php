@@ -11,6 +11,16 @@
     border-right: 1px solid #fff;
     text-align: center;
   }
+
+  .fa-eye {
+    margin-right: 2px;
+    cursor: pointer;
+  }
+
+  .fa-copy {
+    margin-left: 2px;
+    cursor: pointer;
+  }
 </style>
 
 @section('content')
@@ -29,30 +39,27 @@
   </div>
 
   <div class="row justify-content-center">
-    <table class="table table-striped">
 
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Website</th>
-          <th scope="col">Username</th>
-          <th scope="col">Password</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
+    <table class="table table-bordered">
+      <tr>
+        <th>Website</th>
+        <th>URL</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
 
-      <tbody>
-        <tr>
-          <td><a href="http://amazon.co.uk">Amazon</td>
-          <td>Username</td>
-          <td>Password</td>
-          <td>
-            <i class="fa fa-eye"></i>
-            <i class="fa fa-copy"></i>
-          </td>
-        </tr>
-      </tbody>
-
+      @foreach ($passwords as $row)
+      <tr>
+        <td>{{$row['website']}}</td>
+        <td>{{$row['url']}}</td>
+        <td>{{$row['username']}}</td>
+        <td>{{$row['password']}}</td>
+        <td><i class="fa fa-eye"></i><i class="fa fa-copy"></i></td>
+      </tr>
+      @endforeach
     </table>
+
   </div>
 </div>
 @endsection
