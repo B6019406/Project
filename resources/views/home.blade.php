@@ -49,17 +49,34 @@
         <th>Actions</th>
       </tr>
 
-      @foreach ($passwords as $row)
+      {{-- Display login details in table --}}
+      @foreach (Auth::user()->$passwords as $row)
       <tr>
         <td>{{$row['website']}}</td>
         <td>{{$row['url']}}</td>
         <td>{{$row['username']}}</td>
         <td>{{$row['password']}}</td>
-        <td><i class="fa fa-eye"></i><i class="fa fa-copy"></i></td>
+        <td><i class="fa fa-eye"></i><i class="fa fa-copy" onclick="copy()"></i></td>
       </tr>
       @endforeach
     </table>
 
   </div>
 </div>
+
+{{-- <script>
+  // Function to copy password to clipboard
+  function copy() {
+        // Get text in td tag
+        var copyText = document.getElementsByName("td");
+
+        // Select text field
+        copy.select();
+        copy.setSelectionRange(0, 99999); 
+
+        // Copy text in textbox
+        document.execCommand("copy");
+    }
+</script> --}}
+
 @endsection

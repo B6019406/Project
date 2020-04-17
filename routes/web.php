@@ -23,6 +23,10 @@ Route::get('/generator', function () {
     return view('generator');
 });
 
+Route::get('/password/hint', function () {
+    return view('hint');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
