@@ -21,6 +21,10 @@
     margin-left: 2px;
     cursor: pointer;
   }
+
+  .hidetext {
+    -webkit-text-security: disc;
+  }
 </style>
 
 @section('content')
@@ -50,13 +54,17 @@
       </tr>
 
       {{-- Display login details in table --}}
-      @foreach (Auth::user()->$passwords as $row)
+      @foreach ($passwords as $row)
       <tr>
         <td>{{$row['website']}}</td>
         <td>{{$row['url']}}</td>
         <td>{{$row['username']}}</td>
-        <td>{{$row['password']}}</td>
-        <td><i class="fa fa-eye"></i><i class="fa fa-copy" onclick="copy()"></i></td>
+        <td type="hidden" id="pswd">{{$row['password']}}</td>
+        <td>
+          <button type="button" id="viewPswd" class="btn btn-outline-dark"><i class="fa fa-eye"></i></button>
+          <button type="button" id="copyPswd" class="btn btn-outline-dark" onclick="copy()"><i
+              class="fa fa-copy"></i></button>
+        </td>
       </tr>
       @endforeach
     </table>
@@ -64,19 +72,19 @@
   </div>
 </div>
 
-{{-- <script>
+@endsection
+
+<script>
   // Function to copy password to clipboard
   function copy() {
         // Get text in td tag
-        var copyText = document.getElementsByName("td");
+        var copyText = document.getElementById("pswd");
 
         // Select text field
-        copy.select();
-        copy.setSelectionRange(0, 99999); 
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); 
 
         // Copy text in textbox
         document.execCommand("copy");
     }
-</script> --}}
-
-@endsection
+</script>

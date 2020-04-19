@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Crypt;
+
 use Illuminate\Http\Request;
 use App\Password;
 
@@ -25,6 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $passwords = Password::all()->toArray();
+
+        $decrypted = Crypt::decrypt($encryptedValue ?? '');
         
         return view('home', compact('passwords'));
     }

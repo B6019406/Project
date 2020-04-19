@@ -53,7 +53,7 @@
 
 <script>
     function showHint() {
-        if(document.getElementById())
+        if(document.getElementById(display))
     }
 </script>
 
