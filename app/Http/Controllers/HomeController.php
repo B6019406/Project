@@ -29,9 +29,9 @@ class HomeController extends Controller
         // Get Authenticated users email
         $userId = Auth::user()->email;
 
-        $passwords = Password::select('website', 'url', 'username', 'password')->where($userId, 'username')->get();
+        $passwords = Password::select('website', 'url', 'username', 'password')->where('username', $userId)->get();
 
-        // $decrypted = Crypt::decrypt($encryptedValue ?? '');
+        // $passwords = $decrypted = Crypt::decrypt($encryptedValue ?? '');
         
         return view('home', compact('passwords'));
     }
