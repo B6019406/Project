@@ -14,7 +14,7 @@
                 <div class="card-header">{{ __('Password Hint') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}" autocomplete="off">
+                    <form method="GET" action="get" autocomplete="off">
                         @csrf
 
                         {{-- Email Address --}}
@@ -39,7 +39,7 @@
                         {{-- Login Button --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-outline-dark">
+                                <button type="submit" class="btn btn-outline-dark" onclick="showHint()">
                                     {{ __('Get Hint') }}
                                 </button>
                             </div>
@@ -53,7 +53,7 @@
 
 <script>
     function showHint() {
-        if(document.getElementById(display))
+        document.getElementById(display).innerHTML = {{ Auth::user()[password_hint] }}
     }
 </script>
 

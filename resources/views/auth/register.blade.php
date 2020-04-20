@@ -84,6 +84,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+
+                                <a class="btn btn-outline-dark" href="/password/generator" target="_blank">Use Password
+                                    Generator</a>
                             </div>
                         </div>
 

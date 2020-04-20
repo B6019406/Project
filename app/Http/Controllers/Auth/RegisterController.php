@@ -73,4 +73,9 @@ class RegisterController extends Controller
             'password_hint' => $data['password_hint']
         ]);
     }
+
+    protected function store(Request $request)
+    {
+        return $request->all();
+    }
 }

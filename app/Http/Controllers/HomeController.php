@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Crypt;
-
+// use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use App\Password;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -26,9 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $passwords = Password::all()->toArray();
+        // Get Authenticated users email
+        $userId = Auth::user()->email;
 
-        $decrypted = Crypt::decrypt($encryptedValue ?? '');
+        $passwords = Password::select('website', 'url', 'username', 'password')->where($userId, 'username')->get();
+
+        // $decrypted = Crypt::decrypt($encryptedValue ?? '');
         
         return view('home', compact('passwords'));
     }

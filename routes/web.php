@@ -15,11 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function ($id) {
+   
+    $user =  App\User::findOrFail($id);
+
+    if($user->user_id == auth()->id()){
+        return $passwords;
+     }
+    return $passwords;
+  });
+
 Route::get('/add', function () {
     return view('add');
 });
 
-Route::get('/generator', function () {
+Route::get('/password/generator', function () {
     return view('generator');
 });
 
@@ -28,6 +38,8 @@ Route::get('/password/hint', function () {
 });
 
 Auth::routes();
+
+Route::post('/register', 'RegisterController@store')->name('register');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

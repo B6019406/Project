@@ -47,6 +47,30 @@ class PasswordsController extends Controller
         return Redirect::back();
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'website' => 'required',
+            'url' => 'required',
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+    
+        $newPassword = new Password();
+        //On left field name in DB and on right field name in Form/view
+        $newPassword->website = $request->input('website');
+        $newPassword->url = $request->input('url');
+        $newPassword->username = $request->input('username');
+        $newPassword->password = $request->input('password');
+        $newPassword->save();
+    }
+
     public function index()
     {
         return view('add');

@@ -32,7 +32,7 @@
                 <div class="card-header">{{ __('Add to Collection') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('add') }}" autocomplete="off">
+                    <form method="POST" action="create" autocomplete="off">
                         @csrf
 
                         {{-- Website Name --}}
@@ -86,7 +86,7 @@
                                     {{ __('Add to Vault') }}
                                 </button>
 
-                                <a class="btn btn-outline-dark" href="/generator" target="_blank">Use Password
+                                <a class="btn btn-outline-dark" href="/password/generator" target="_blank">Use Password
                                     Generator</a>
                             </div>
                         </div>
