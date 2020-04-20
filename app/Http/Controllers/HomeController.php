@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         $passwords = Password::select('website', 'url', 'username', 'password')->where('username', $userId)->get();
 
-        // $passwords = $decrypted = Crypt::decrypt($encryptedValue ?? '');
+        
         
         return view('home', compact('passwords'));
     }

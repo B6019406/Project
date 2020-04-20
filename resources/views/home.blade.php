@@ -57,9 +57,9 @@
       @foreach ($passwords as $row)
       <tr>
         <td>{{$row['website']}}</td>
-        <td>{{$row['url']}}</td>
+        <td><a href="{{$row['url']}}">{{$row['url']}}</a></td> {{-- Shows URL as link and takes user to that page --}}
         <td>{{$row['username']}}</td>
-        <td type="hidden" id="pswd">{{$row['password']}}</td>
+        <td id="pswd">{{$row['password']}}</td>
         <td>
           <button type="button" id="viewPswd" class="btn btn-outline-dark"><i class="fa fa-eye"></i></button>
           <button type="button" id="copyPswd" class="btn btn-outline-dark" onclick="copy()"><i

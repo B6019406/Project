@@ -46,4 +46,4 @@ Route::post('/register', 'RegisterController@store')->name('register');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/password/add', 'PasswordsController@store')->name('add');
+Route::post('/home', 'PasswordsController@store')->name('add');

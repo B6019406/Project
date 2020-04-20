@@ -4,23 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Encryptable;
 
 class Password extends Model
 {
-    public function store(Request $request)
-    {       
-        $password= new Password();
-            $password->website= $request['website'];
-            $password->url= $request['url'];
-            $password->username= $request['username'];
-            $password->password= $request['password'];  
-        
-        $user->save();
-        return redirect('/home');
-    }
+    public $timestamps = false;
 
     protected $fillable = [
         'website', 'url', 'username', 'password'
+    ];
+
+    protected $encryptable = [
+        'password',
     ];
 
     public function user() {

@@ -22,6 +22,12 @@ class UsersTableSeeder extends Seeder
             'email' => 'mcheyenne0@cargocollective.com',
             'password' => bcrypt('password123'),
             'password_hint' => 'Common',
+        ],
+        [
+            'name' => 'Tommy',
+            'email' => 'tfurmagier0@tripod.com',
+            'password' => bcrypt('_v)2(3OC!7GScw7CqqpB'),
+            'password_hint' => '',
         ]
         ]);
     }

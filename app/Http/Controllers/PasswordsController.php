@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Redirect;
 
 use App\Password;
 
 class PasswordsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -27,24 +21,8 @@ class PasswordsController extends Controller
             'website' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:8']
         ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Password
-     */
-    public function create(Request $request)
-    {
-        $website = $request->input('website');
-        $url = $request->input('url');
-        $username = $request->input('username');
-        $password = $request->input('password');
-
-        return Redirect::back();
     }
 
     /**
@@ -55,16 +33,22 @@ class PasswordsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'website' => 'required',
-            'url' => 'required',
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+        {       
+            // Creates new login details to store in database
+            $password= new Password();
+                $password->website= $request['website'];
+                $password->url= $request['url'];
+                $password->username= $request['username'];
+                $password->password= $encrypted = Crypt::encrypt(['password']); // Encrypts password on creation
+            
+            $password->save();
+            return redirect('/home');
+        }
     }
 
-    public function index()
-    {
-        return view('add');
+    public function save_data(Request $request)
+    {     
+        $password = Password::create($request->all());
+        return redirect()->route('/home');
     }
 }
