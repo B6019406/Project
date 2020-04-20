@@ -61,15 +61,9 @@ class PasswordsController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
-    
-        $newPassword = new Password();
-        //On left field name in DB and on right field name in Form/view
-        $newPassword->website = $request->input('website');
-        $newPassword->url = $request->input('url');
-        $newPassword->username = $request->input('username');
-        $newPassword->password = $request->input('password');
-        $newPassword->save();
     }
+    
+    
 
     public function index()
     {

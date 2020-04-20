@@ -32,7 +32,7 @@
                 <div class="card-header">{{ __('Add to Collection') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="create" autocomplete="off">
+                    <form method="POST" action="/add" autocomplete="off">
                         @csrf
 
                         {{-- Website Name --}}
