@@ -62,8 +62,6 @@ class PasswordsController extends Controller
             'password' => 'required'
         ]);
     }
-    
-    
 
     public function index()
     {

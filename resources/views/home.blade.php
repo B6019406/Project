@@ -39,7 +39,7 @@
 
 
   <div class="row justify-content-space-around">
-    <button class="btn btn-outline-dark" onclick="location.href='/add'">+ Add Item</button>
+    <button class="btn btn-outline-dark" onclick="location.href='/password/add'">+ Add Item</button>
   </div>
 
   <div class="row justify-content-center">

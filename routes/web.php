@@ -25,14 +25,17 @@ Route::get('/home', function ($id) {
     return $passwords;
   });
 
-Route::get('/add', function () {
+// Show 'add password' page
+Route::get('/password/add', function () {
     return view('add');
 });
 
+// Show 'password generator' page
 Route::get('/password/generator', function () {
     return view('generator');
 });
 
+// Show 'password hint' page
 Route::get('/password/hint', function () {
     return view('hint');
 });
@@ -43,4 +46,4 @@ Route::post('/register', 'RegisterController@store')->name('register');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/addaction', 'PasswordsController@store')->name('add');
+Route::post('/password/add', 'PasswordsController@store')->name('add');
