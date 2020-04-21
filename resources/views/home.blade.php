@@ -6,6 +6,10 @@
     font-size: 30px;
   }
 
+  table {
+    background-color: #fff;
+  }
+
   th,
   td {
     border-right: 1px solid #fff;
@@ -59,11 +63,10 @@
         <td>{{$row['website']}}</td>
         <td><a href="{{$row['url']}}">{{$row['url']}}</a></td> {{-- Shows URL as link and takes user to that page --}}
         <td>{{$row['username']}}</td>
-        <td id="pswd">{{$row['password']}}</td>
+        <td>{{$row['password']}}</td>
         <td>
           <button type="button" id="viewPswd" class="btn btn-outline-dark"><i class="fa fa-eye"></i></button>
-          <button type="button" id="copyPswd" class="btn btn-outline-dark" onclick="copy()"><i
-              class="fa fa-copy"></i></button>
+          <button type="button" class="btn btn-outline-danger" onclick="delete()"><i class="fa fa-trash"></i></button>
         </td>
       </tr>
       @endforeach
@@ -75,16 +78,5 @@
 @endsection
 
 <script>
-  // Function to copy password to clipboard
-  function copy() {
-        // Get text in td tag
-        var copyText = document.getElementById("pswd");
 
-        // Select text field
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); 
-
-        // Copy text in textbox
-        document.execCommand("copy");
-    }
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use App\Password;
 
@@ -39,13 +40,16 @@ class PasswordsController extends Controller
                 $password->website= $request['website'];
                 $password->url= $request['url'];
                 $password->username= $request['username'];
-                $password->password= $encrypted = Crypt::encrypt(['password']); // Encrypts password on creation
+                $password->password= $encryptedPswd = Crypt::encrypt(['password']); // Encrypts password on creation
             
             $password->save();
+
+            
+            return $encryptedPswd->withCookie(\Cookie::make('name', 'value', $minutes));
             return redirect('/home');
         }
     }
-
+    
     public function save_data(Request $request)
     {     
         $password = Password::create($request->all());

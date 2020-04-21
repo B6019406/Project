@@ -15,8 +15,10 @@ class Password extends Model
     ];
 
     protected $encryptable = [
-        'password',
+        'password'
     ];
+
+    
 
     public function user() {
         return $this->belongsTo("\App\User");
