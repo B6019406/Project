@@ -40,12 +40,10 @@ class PasswordsController extends Controller
                 $password->website= $request['website'];
                 $password->url= $request['url'];
                 $password->username= $request['username'];
-                $password->password= $encryptedPswd = Crypt::encrypt(['password']); // Encrypts password on creation
+                $password->password= $request['password'];
             
             $password->save();
-
             
-            return $encryptedPswd->withCookie(\Cookie::make('name', 'value', $minutes));
             return redirect('/home');
         }
     }

@@ -31,9 +31,6 @@ class HomeController extends Controller
     {
         // Get Authenticated users email
         $userId = Auth::user()->email;
-        $value = \Cookie::get('name');
-
-        Crypt::decrypt($encryptedPswd);
 
         $passwords = Password::select('website', 'url', 'username', 'password')->where('username', $userId)->get();
 
