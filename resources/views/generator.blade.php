@@ -9,6 +9,11 @@
         width: 100%;
     }
 
+    #passLength {
+        border: none;
+        background-color: #f8fafc;
+    }
+
     .bi-arrow-left {
         cursor: pointer;
     }
@@ -39,8 +44,6 @@
                 <hr>
                 <input type="range" min="8" max="40" name="slider" id="slider">
                 <hr>
-                <div id="passLength"></div>
-                <hr>
                 <button onclick="generate()" class="btn btn-outline-dark">Generate</button>
                 <button onclick="copy()" class="btn btn-outline-dark">Copy to Clipboard</button>
             </div>
@@ -52,7 +55,7 @@
 
 <script>
     // Variables
-    let sliderValue = document.getElementById("slider").value
+    var sliderValue = document.getElementById("slider").value
 
     // Function to generate password
     function generate() {
@@ -86,14 +89,6 @@
         document.execCommand("copy");
     }
 
-    // Disable textbox
-    document.getElementById("display").disabled = true;
+    document.getElementById("passLength").value = sliderValue;
 
-    document.getElementById("slider").oninput = function() {
-        if(document.getElementById("slider").value > 0) {
-            document.getElementById("passLength").innerHTML = "Length: " + sliderValue;
-        } else {
-            document.getElementById("passLength").innerHTML = "Length: 1"
-        }
-    }
 </script>

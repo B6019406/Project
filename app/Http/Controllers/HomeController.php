@@ -36,9 +36,4 @@ class HomeController extends Controller
 
         return view('home', compact('passwords'));
     }
-
-    public function user()
-    {
-        
-    }
 }

@@ -53,4 +53,12 @@ class PasswordsController extends Controller
         $password = Password::create($request->all());
         return redirect()->route('/home');
     }
+
+    public function destroy(Request $request)
+    {
+        $password = Password::find($id);
+        $password->delete($id);
+
+        return redirect()->route('/home')->with('success', 'Data Deleted');
+    }
 }

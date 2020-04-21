@@ -19,11 +19,22 @@
   .fa-eye {
     margin-right: 2px;
     cursor: pointer;
+    color: #000;
   }
 
   .fa-copy {
     margin-left: 2px;
     cursor: pointer;
+    color: #000;
+  }
+
+  .fa-trash {
+    margin-left: 2px;
+    cursor: pointer;
+  }
+
+  #pswdBox {
+    border: none;
   }
 
   .hidetext {
@@ -35,12 +46,13 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        <p>{{$message}}</p>
+      </div>
+      @endif
     </div>
   </div>
-
-  {{-- Add search bar here --}}
-
 
   <div class="row justify-content-space-around">
     <button class="btn btn-outline-dark" onclick="location.href='/password/add'">+ Add Item</button>
@@ -48,9 +60,9 @@
 
   <div class="row justify-content-center">
 
-    <table class="table table-bordered">
+    <table class="table sortable table-bordered" id="pswdTable">
       <tr>
-        <th>Website</th>
+        <th onclick="sortTable">Website</th>
         <th>URL</th>
         <th>Username</th>
         <th>Password</th>
@@ -58,15 +70,20 @@
       </tr>
 
       {{-- Display login details in table --}}
-      @foreach ($passwords as $row)
+      @foreach ($passwords as $i => $row)
       <tr>
         <td>{{$row['website']}}</td>
-        <td><a href="{{$row['url']}}">{{$row['url']}}</a></td> {{-- Shows URL as link and takes user to that page --}}
+        {{-- Shows URL as link and takes user to that page --}}
+        <td><a href="{{$row['url']}}" target="_blank">{{$row['url']}}</a></td>
         <td>{{$row['username']}}</td>
-        <td>{{$row['password']}}</td>
+        <td><input type="password" id="pswdBox{{$i}}" value="{{$row['password']}}" readonly></td>
         <td>
-          <button type="button" id="viewPswd" class="btn btn-outline-dark"><i class="fa fa-eye"></i></button>
-          <button type="button" class="btn btn-outline-danger" onclick="delete()"><i class="fa fa-trash"></i></button>
+          {{-- View password --}}
+          <button type="button" id="{{ 'n-' . $i }}" class="btn btn-outline-dark" onclick='viewPswd("pswdBox{{$i}}")'><i
+              class="fa fa-eye"></i></button>
+          {{-- Copy password --}}
+          <button type="button" id="copyPswd" class="btn btn-outline-dark" onclick='copyPswd("pswdBox{{$i}}")'><i
+              class="fa fa-copy"></i></button>
         </td>
       </tr>
       @endforeach
@@ -78,5 +95,27 @@
 @endsection
 
 <script>
+  // Function to show and hide passwords
+  function viewPswd(id) {
+    var x = document.getElementById(id);
+    console.log(id);
 
+    if(x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  // Function to copy password to clipboard
+  function copyPswd(id) {
+    var y = document.getElementById(id)
+
+    // Select text field
+    y.select();
+    y.setSelectionRange(0, 99999); 
+
+    // Copy text in textbox
+    document.execCommand("copy");
+  }
 </script>

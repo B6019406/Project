@@ -51,10 +51,4 @@
     </div>
 </div>
 
-<script>
-    function showHint() {
-        document.getElementById(display).innerHTML = {{ Auth::user()[password_hint] }}
-    }
-</script>
-
 @endsection

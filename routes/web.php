@@ -44,6 +44,8 @@ Auth::routes();
 
 Route::post('/register', 'RegisterController@store')->name('register');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'PasswordsController@store')->name('add');
+Route::get('/home/delete', 'PasswordsController@destroy')->name('home');

@@ -68,8 +68,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                <a class="btn btn-outline-dark" href="/password/hint" target="_blank">Password Hint</a>
                             </div>
                         </div>
                     </form>
