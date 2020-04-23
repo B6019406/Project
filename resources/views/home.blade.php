@@ -33,7 +33,7 @@
     cursor: pointer;
   }
 
-  #pswdBox {
+  .pswdBox {
     border: none;
   }
 
@@ -76,13 +76,13 @@
         {{-- Shows URL as link and takes user to that page --}}
         <td><a href="{{$row['url']}}" target="_blank">{{$row['url']}}</a></td>
         <td>{{$row['username']}}</td>
-        <td><input type="password" id="pswdBox{{$i}}" value="{{$row['password']}}" readonly></td>
+        <td><input type="password" class="pswdBox" id="pswdBox{{$i}}" value="{{$row['password']}}" readonly></td>
         <td>
           {{-- View password --}}
           <button type="button" id="{{ 'n-' . $i }}" class="btn btn-outline-dark" onclick='viewPswd("pswdBox{{$i}}")'><i
               class="fa fa-eye"></i></button>
           {{-- Copy password --}}
-          <button type="button" id="copyPswd" class="btn btn-outline-dark" onclick='copyPswd("pswdBox{{$i}}")'><i
+          <button type="button" id="{{ 'n-' . $i }}" class="btn btn-outline-dark" onclick='copyPswd("pswdBox{{$i}}")'><i
               class="fa fa-copy"></i></button>
         </td>
       </tr>
